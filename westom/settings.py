@@ -24,22 +24,22 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASE_ENGINE = 'mysql'           # 'postgresql', 'mysql', 'sqlite3' or 'ado_mssql'.
-DATABASE_NAME = 'westom'             # Or path to database file if using sqlite3.
-DATABASE_USER = 'westom'             # Not used with sqlite3.
-#DATABASE_NAME = 'tzellman_westom'
-#DATABASE_USER = 'tzellman_westom'
-DATABASE_PASSWORD = 'slayer'         # Not used with sqlite3.
+DATABASE_ENGINE = 'mysql'      # 'postgresql', 'mysql', 'sqlite3' or 'ado_mssql'.
+DATABASE_NAME = ''             # Or path to database file if using sqlite3.
+DATABASE_USER = ''             # Not used with sqlite3.
+#DATABASE_NAME = ''
+#DATABASE_USER = ''
+DATABASE_PASSWORD = ''         # Not used with sqlite3.
 DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
 DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
 
 
 ## MAIL SETTINGS
-EMAIL_HOST = "mail1.webfaction.com"
+EMAIL_HOST = ""
 EMAIL_PORT = 25
-DEFAULT_FROM_EMAIL = "accounts@feednut.com"
-EMAIL_HOST_USER = 'tzellman'
-EMAIL_HOST_PASSWORD = 'a2ba0870'
+DEFAULT_FROM_EMAIL = ""
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
 
 
 # Local time zone for this installation. All choices can be found here:
