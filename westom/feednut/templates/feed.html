@@ -1,0 +1,14 @@
+{% load feednut_tags %}
+
+<div class="block" id="block_{{ feed.id }}">
+	<div class="feed" id="{{ feed.id }}">
+	    {% load_feed_hdr_page %}
+	    {% load_feed_options_page %}
+	    <div id="url_{{ feed.id }}" class="invisible">{{ feed.xml_url }}</div>
+	    <div class="entries" id="ent_{{ feed.id }}">
+            {% for entry in userfeed.get_entries %}
+                {% load_feed_entry_page feed.id forloop.counter0 %}
+            {% endfor %}
+	    </div>
+	</div>
+</div>

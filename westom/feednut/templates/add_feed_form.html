@@ -1,0 +1,54 @@
+
+{% load feednut_tags %}
+{% load feednut_filters %}
+
+<div class="form">
+{% if feed %}
+    <div class="title">Add Feed - {{ feed.title }}</div>
+    <div class="xml truncate"><a target="_blank" href="{{ feed.xml_url}}">{{ feed.xml_url}}</a></div>
+    <div class="desc truncate">{{ feed.subtitle }}</div>
+	<br/>
+	<form name="addform" onsubmit="add_feed(this, 'subst', {% if on_my_page %}true{% else %}false{% endif %}, '{{ calling_link }}');{% if not async %}redirect_after_delay('/{{ user.username }}/', 1);{% endif %}return false;">
+        <div class="tags">
+            <label for="tags">Tags:</label><input type="text" id="addtags" name="tags" value="fn:home " size="28"/>
+            <input type="hidden" name="feed_id" value="{{ feed.id }}"/>
+        </div>
+		{% if tags %}
+	        <div id="add_feed_form_tags" class="suggest">
+	        	<b>Your Tags: </b>
+				{% for tag in tags %}
+					<a onclick="MochiKit.DOM.$('addtags').value += '{{ tag }} ';">{{ tag }}</a>
+				{% endfor %}
+				<br/>
+			</div>
+		{% endif %}
+	    {% if feed.get_suggested_tags %}
+		    <div class="suggest">
+		    	<b>Suggested Tags:</b>
+		        {% for tag in feed.get_suggested_tags %}
+		            <a onclick="MochiKit.DOM.$('addtags').value += '{{ tag }} ';" title="{{ tag }}" alt="{{ tag }}">{{ tag }}</a>
+		        {% endfor %}
+	    	</div>
+	    {% endif %}
+	    <br/>
+    	<div class="control">
+    		<input class="submit" type="submit" value="Add Feed!"/>
+    		{% if async %}
+        		<input onclick="hideLightbox(); return false;" class="submit" type="submit" value="Cancel"/>
+        	{% else %}
+        		<input onclick="redirect('/');return false;" class="submit" type="submit" value="Cancel"/>
+        	{% endif %}
+        </div>
+    </form>
+    <div id="subst" class="status invisible"></div>  
+{% else %}
+	<div class="title error center">Error - Cannot add feed. <br/>Invalid feed information.</div>
+	<br/>
+	{% if async %}
+		<div class="control"><input onclick="hideLightbox(); return false;" class="submit" type="submit" value="Close"/></div>
+	{% else %}
+		<div class="control"><input onclick="history.go(-1); return false;" class="submit" type="submit" value="Back"/></div>
+	{% endif %}
+{% endif %}
+	          		                
+</div>	           

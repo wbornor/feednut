@@ -1,0 +1,6 @@
+{{ obj.subtitle }}
+{% if obj.xml_url %}
+<p>
+    <div><a href="/form/add_feed/?url={{ obj.xml_url|urlencode }}"><img src="http://feednut.com/static/img/feednut_add.gif"/></a></div>
+</p>
+{% endif %}

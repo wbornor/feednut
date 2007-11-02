@@ -1,0 +1,201 @@
+@import url(lightbox.css);
+@import url(niftyCorners.css);
+body { background: #e0ecff url("/static/img/bg2.gif") repeat; color: Navy; font-family: Lucida Grande, Tahoma, sans-serif; font-size: 11px; margin: 0 auto; }
+
+h4 { font-size: small; font-variant: small-caps; color: #000722; }
+
+form { margin: 0; }
+
+a { color: navy; text-decoration: none; cursor:pointer; }
+
+fieldset { padding:10px; }
+
+a:visited{ color: navy; }
+
+a img { border: none; }
+
+div, tr, td, span, p, b, ul, ol, li, span { font-size: inherit; line-height: inherit; }
+
+/*  PAGE STRUCTURE  */
+#container { margin: 0 auto; border: 0px solid black; float: left; }
+
+#main { padding: 0px 10px 0px 10px; margin: 5px; }
+
+#header	{ text-align: left; min-height: 40px; _height: 40px; margin: 0; }
+
+#header	{ background: #9DB3D7; color: Navy; border-bottom: 1px solid #3a73ba; }
+
+#header a { color: Navy; text-decoration: none; font-size: 12px; }
+
+#header label{ color: white; }
+
+#footer	{ text-align: center; min-height: 10px; _height: 10px; color: navy; background: inherit; padding: 2px; }
+
+input, textarea, select	{ margin: 2px 0; padding: 2px 3px; vertical-align: middle; border: 1px solid #ccc; font-family: "Lucida Grande", Verdana, Arial, sans-serif; font-weight: normal; font-size: 11px; }
+
+div.spacer { clear: both; font-size:0px; margin:0; padding:0;}
+
+ul.pipe { margin-left: 0; padding-left: 0; font-weight: normal; color: inherit; }
+
+ul.pipe li { margin-left: 0; padding-left: 5px; border-left: 1px solid navy; list-style: none; display: inline; }
+
+ul.pipe li.first { margin-left: 0; border-left: none; list-style: none; display: inline; }
+
+h1,h2,h2,h4,h5, .strong { font-weight: bold; }
+
+a:hover, #header a:hover { color: Red; text-decoration: underline; }
+
+.column{ margin: 4px; border: 1px solid #e0ecff; }
+
+/*.col3{ width: 32%; }*/
+.block{ margin-bottom: 8px; position: relative; /*border: 1px solid #c3d9ff; background-color: inherit;*/ clear: both; }
+
+.feed{ /*inherit: background;*/ }
+.entry a {color:navy; margin-left:3px;}
+
+.entry_title {padding-left: 2px; }
+
+.entry_hover{ background-color: #F1F0FF; cursor:pointer; }
+
+#login, #forgot_pass{ text-align: center; margin: 0 auto; border: 0px solid black; background: #F7FFF0; }
+
+.blockhdr{ background: #c3d9ff; cursor: move; font-size: 12px; font: bold; padding-left: 2px; }
+
+.left{ float: left; }
+
+.sum{ background: #F1F0FF; font-size: 11px; color: Navy; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; padding: 2px 2px; }
+
+.sumdata{ }
+
+.sumlink a{ font: bold; color: red; }
+
+.form-set{ border: none; margin-bottom: 2px; }
+
+.form-set div { text-align: center; clear: both; font-size: 11px; color: #666; }
+
+/*  ALIGNED FIELDSETS  */
+.aligned label { display: block; padding: 0 3px 1px 0; float: left; text-align: left; width: 5em; }
+
+.aligned label.inline { display: inline; float: none; }
+
+.normalRow { background: #FFFFFF; padding: 1px; }
+
+.alternateRow { background: #FFFFFF; padding: 1px; }
+
+.title { font-size: larger; font-weight: bold; color: navy; }
+
+.xml{ font-size: 90%; }
+
+.suggeset a{ color: red; font-size: small; }
+
+#main_msg{ color: red; font-size: 14px; font-family: "Lucida Grande", Verdana, Arial, sans-serif; }
+
+/* tooltips */
+/*a.info{ position: relative; z-index: 24; }
+
+a.info:hover{ z-index: 25; }
+
+a.info:hover span{ display: block; position: absolute; top: 2em; left: 0em; width: 15em; border: 1px solid #0cf; background-color: #FDFFDF; color: #000; text-align: center; }
+*/
+.right { float: right; }
+
+.invisible, .hidden, a.info span { display: none; }
+
+#faq h2{ text-align: center; padding-bottom: 5px; font-size: 2em; }
+
+#faq ol{ font-weight: normal; font-size: 120%; }
+
+#faq ol li .q{ padding-bottom: .8em; padding-top:1em; font-size: 140%; font-weight: bold; }
+
+.truncate, .feeds { overflow: hidden; word-wrap: break-word; }
+
+.pagination{ background: #FFFACD; text-align: center; }
+
+.strike{ text-decoration: line-through; }
+
+.sub a, .sub a:visited{ color: red; text-decoration: none; }
+
+.options{ background: #FAF0E6; padding-bottom: 4px; }
+
+.suggest a{ color: #DC143C; text-decoration: none; }
+
+.large { font-size: large; }
+
+.center-blurb a{ font-size: medium; color: #f33106; }
+
+.center-blurb {width:75%; margin: 0 auto; border:0px solid black;}
+
+.error { font-weight: bold !important; color: Red !important; }
+
+.tags span{ margin-right: 12px; }
+
+.tags{ padding-bottom: 5px; }
+
+.bigtag{ font-size: 200%; font-weight: bolder; }
+
+.submit { margin: 0; padding: 0; }
+
+.status{ color: red; font-size: 90%; }
+
+.italic{ font-style: italic; }
+
+.errtitle{ font-weight:bold; font-size:3em; color:Navy;}
+.errmsg{ font-size:150%; color:Navy;}
+.bmain{background-color:white;}
+
+.tabs{ float: left; width: 100%; background: #c3d9ff; line-height: normal; }
+
+.tabs ul { margin: 0; padding: 4px 4px 0; list-style: none; }
+
+.tabs li { float: left; background: url("/static/img/left.gif") no-repeat left top; margin: 0; padding: 0 0 0 9px; }
+
+.tabs a { float: left; display: block; background: url("/static/img/right.gif") no-repeat right top; padding: 5px 15px 4px 6px; text-decoration: none; font-weight: bold; color: #765; }
+
+.tabs a:visited{ color: #765; }
+
+/* Commented Backslash Hack
+   hides rule from IE5-Mac \*/
+.tabs a { float: none; }
+
+/* End IE5-Mac hack */
+.tabs a:hover { color: red; }
+
+.tabs .current { background-image: url("/static/img/left_on.gif"); }
+
+.tabs .current a { background-image: url("/static/img/right_on.gif"); color: navy; padding-bottom: 5px; }
+
+.tab-data {padding: 10px; background: white; }
+
+.tab-data a {color: #f33106;}
+
+.add-tab a {color: #f33106;}
+
+.feedback-tab a {color: #f33106;}
+
+span.info{
+  position:relative; /*this is the key*/
+  /*cursor:help;*/
+}
+span.info span.tooltip { display:none; z-index:200;}
+span.info:hover span.tooltip { /*the span will display just on :hover state*/
+  display:block;
+  position:absolute;
+  top:-2.2em; left:-3em; width:14em;
+  border:1px solid #0cf;
+  padding:1px;
+  background-color:white;
+  /*color:#000;*/
+  font-size:80%;
+  text-align:left;
+}
+
+.minititle{font-weight:bold;}
+
+.form {border:0px solid black; text-align:left; margin-left:5%; margin-right:5%; padding:10px;}
+
+.form .control{text-align:center;}
+
+.center {text-align:center;}.add_feed_form .control{text-align:center;}
+
+/* Hides from IE5-mac - holly hack\*/
+* html .holly { height: 1%; }

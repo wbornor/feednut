@@ -1,0 +1,42 @@
+{% load feednut_tags %}
+{% load captcha %}
+
+<div class="block invisible" id="acct">
+
+    <div class="blockhdr">
+        
+        <table width="100%"><tr>
+        <td><div><img class="skip" src="{{ MEDIA_URL }}/img/window_gear.png"/><span>Account Settings</span></div></td>
+        <td valign="top" align="right" width="40%">
+            <div>
+            <a href="javascript:void(0)" onclick="toggle_block(this, 'acct_main');"><img class="skip" src="{{ MEDIA_URL }}/img/navigate_down2.png"/></a>
+            <a href="javascript:void(0)" onclick="toggle_specialblock('acct');"><img class="skip" src="{{ MEDIA_URL }}/img/delete2.png"/></a>
+            </div>
+        </td></tr></table>
+    </div>
+    
+    
+    <div id="acct_main">
+	    <form name="acctops" onsubmit="update_acct(this, 'acct_st'); return false;">
+		    <table width="100%">
+		        <tr>
+		            <td><label for="email">email:</label></td>
+		            <td><input type="text" name="email" size="20" value="{{ user.email }}"/></td>
+		        </tr>
+		        <tr>
+		            <td><label for="password">password:</label></td>
+		            <td><input type="password" name="password" size="20"/></td>
+		        </tr>
+				<tr><td colspan="2" align="center">{% captcha %}<img id="acct_capimg" src="{{ captcha_image }}" width="140" height="50"/><br/></td></tr>
+				<tr><td><label for="captcha_word">security word</label></td><td><input type="text" name="captcha_word" maxlength="20"/></td></tr>
+		        <tr>
+		            <td colspan="2" align="center"><input class="submit" type="submit" name="update" value="Update Acount!"/></td>
+		        </tr>
+		    </table>
+		    <input type="hidden" id="acct_cap" name="captcha_id" value="{{ captcha_id }}"/>
+	    </form>
+	    <div id="acct_st" class="invisible status"></div>
+		<div class="spacer"></div>
+	</div>
+    <div class="spacer"></div>
+</div>

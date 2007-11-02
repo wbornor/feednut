@@ -1,0 +1,81 @@
+{% load feednut_tags %}
+
+{% get_user_tag_tuples tags %}
+
+<div id="tb_block">
+    <div id="toolbar">
+        <div class="tabs holly">
+		    <ul class="holly">
+				<li class="current"><a href="javascript:void(0)" onClick="return showPane('tagsPane', this)" id="tagsTab">{{ page_user }}'s Tags ({{ tags|length }})</a></li>
+				{% if user.is_authenticated %}
+				    <li><a href="javascript:void(0)" onClick="return showPane('addPane', this)" id="addTab">Feeds</a></li>
+				{% endif %}
+				<li><a href="javascript:void(0)" onClick="return showPane('socialPane', this)" id="socialTab">Community</a></li>
+				<li><a href="javascript:void(0)" onClick="return showPane('toolsPane', this)" id="toolsTab">Tools</a></li>
+				<li><a href="javascript:void(0)" onClick="return showPane('feedbackPane', this)" id="feedbackTab">Feedback</a></li>
+			</ul>
+        </div>
+         
+         <div class="tab-panes">
+             <div class="tab-data invisible" id="tagsPane">
+			    <div id="utags" class="tags">
+				    {% for tag in tags %}<span><a style="color:{% cycle navy,#0065D0 %};" href="javascript:void(0)" onclick="load_feeds(this, '{{ page_user.username }}');">{{ tag.tag }} ({{ tag.count }})</a></span>{% endfor %}
+				    <span><a href="javascript:void(0)" onclick="load_feeds(this, '{{ page_user.username }}');">fn:untagged</a></span>
+			    </div>
+			    <div>
+			        <span><a href="/{{ page_user.username }}/tags/fn:all/">Show</a> All Feeds</span>
+			    </div>
+			    <div class="spacer"></div>
+             </div>
+             
+             {% if user.is_authenticated %}
+             <div class="tab-data invisible" id="addPane">
+             	<div class="add-tab">
+	                 <form id="addfeed_tb" name="addfeed" action="/form/subscribe/" onsubmit="showLightbox(form_to_anchor(this));return false;" method="POST" >
+					    <div>Feed URL: <input type="text" name="url" size="50"/>&nbsp;<input class="submit" type="submit" name="addfeed" value="Subscribe!"/>&nbsp;<input class="submit" type="reset" name="clear" value="clear"/></div>
+					    <input type="hidden" name="page_user_id" value="{{ page_user.id }}"/>
+					    <input type="hidden" name="async" value=""/>
+				    </form>
+				    <div id="add_tb" class="invisible status"></div>
+					
+					<div><a href="/{{ page_user.username }}/subscriptions/export/"><img src="{{ MEDIA_URL }}/img/download.gif"/> Export</a> {{ page_user }}'s Subscriptions to OPML.</div>
+					{% ifisme %}
+					    <div><a href="javascript:void(0)" onclick="MochiKit.DOM.toggleElementClass('invisible', 'opml_form');return false;"><img src="{{ MEDIA_URL }}/img/upload.gif"/> Import</a> OPML Subscriptions.</div>
+					    <div id="opml_form" class="invisible">
+					        <form action="/{{ user.username }}/subscriptions/import/" method="POST" enctype="multipart/form-data">
+							    <div>Select an OPML File: <input type="file" name="opmlfile" id="opmlfile" size="50"/>&nbsp;<input class="submit" type="submit" value="Upload"/>&nbsp;<input class="submit" type="reset" name="clear" value="clear"/></div>
+						    </form>
+						</div>
+					{% endifisme %}
+				    <div><a href="javascript:void(0)" onclick="toggle_specialblock('addsearch');">Search</a> for feeds.</div>
+	             </div>
+	             <div class="spacer"></div>              
+             </div>
+             {% endif %}
+             <div class="tab-data invisible" id="socialPane">
+                 {% load_community_page %}
+                 <div class="spacer"></div>
+             </div>
+			 <div class="tab-data invisible" id="toolsPane">
+                 <div class="spacer"></div>
+				 <div>
+				 	 <p class="title">Subscribe in Feednut Button</p>
+				 	 <p><img src="http://feednut.com/static/img/feednut_subscribe.gif" alt="FeedNut" border="0" width="91" height="17"/></p>
+					 <p>Want to add this feednut button to your site or blog? Copy and paste this into your html and replace &lt;feed_url&gt; with your feed's url.</p>
+					 <p><textarea cols="100" rows="4"><a href="http://feednut.com/form/subscribe/?url=<feed_url>" title="Subscribe in FeedNut"><img src="http://feednut.com/static/img/feednut_subscribe.gif" alt="FeedNut" border="0" width="91" height="17"></a></textarea></p>
+			     </div>
+                 <div class="spacer"></div>
+             </div>
+             <div class="tab-data invisible" id="feedbackPane">
+                 <div class="feedback-tab">
+                    What do you love and hate about FeedNut? What would you like to see added/removed? <br/>
+                    We would like to know, so join us in the <a target="_blank" href="http://groups.google.com/group/feednut">FeedNut Discussion Group!</a>
+			     </div>
+                 <div class="spacer"></div>
+             </div>
+
+         </div>
+     </div>
+        
+</div>
+<div class="spacer"></div>

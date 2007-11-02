@@ -1,0 +1,45 @@
+{% load feednut_tags %}
+
+<div class="block invisible" id="addsearch">
+
+    <div class="blockhdr">
+        
+        <table width="100%"><tr>
+        <td><div><img class="skip" src="{{ MEDIA_URL }}/img/search.png"/><span>Search and Subscribe</span></div></td>
+        <td valign="top" align="right" width="40%">
+            <div>
+            <a href="javascript:void(0)" onclick="toggle_block(this, 'addsearch_main');"><img class="skip" src="{{ MEDIA_URL }}/img/navigate_down2.png"/></a>
+            {% ifisme %}
+                <a href="javascript:void(0)" onclick="MochiKit.DOM.toggleElementClass('invisible', 'addsearch_optz');this.blur();"><img src="{{ MEDIA_URL }}/img/window_gear.png"/></a>
+            {% endifisme %}
+            <a href="javascript:void(0)" onclick="toggle_specialblock('addsearch');"><img class="skip" src="{{ MEDIA_URL }}/img/delete2.png"/></a>
+            </div>
+        </td></tr></table>
+    </div>
+    
+    
+    <div class="options invisible" id="addsearch_optz">
+	    <table width="100%"><tr>
+	        <td>{% comment %}<div><a href="javascript:void(0)" onclick="MochiKit.DOM.toggleElementClass('invisible', 'addsearch_optz');"><img class="skip" alt="hide" src="{{ MEDIA_URL }}/img/gear_delete.png"/></a></div>{% endcomment %}</td>
+	        <td align="right"><div><a href="javascript:void(0)" onclick="move_block('addsearch', 'd');"><img class="skip" src="{{ MEDIA_URL }}/img/nav_down_green.png"/></a><a href="javascript:void(0)" onclick="move_block('addsearch', 'u');"><img class="skip" src="{{ MEDIA_URL }}/img/nav_up_green.png"/></a><a href="javascript:void(0)" onclick="move_block('addsearch', 'l');"><img class="skip" src="{{ MEDIA_URL }}/img/nav_left_blue.png"/></a><a href="javascript:void(0)" onclick="move_block('addsearch', 'r');"><img class="skip" src="{{ MEDIA_URL }}/img/nav_right_blue.png"/></a></div></td>
+	    </tr></table>
+	</div>
+    
+
+    <div class="bmain" id="addsearch_main">
+        <form id="search" name="search" onsubmit="do_search(); return false;">
+		    <table>
+			    <tr><td>Search:</td></tr>
+			    <tr><td><input type="text" name="query"/>
+			    <input class="submit" type="submit" value="Search!"/>
+				</td></tr>
+				{% comment %}<tr><td>Tip: Wildcards are acceptable.</td></tr>{% endcomment %}
+			</table>
+		    <input type="hidden" name="page_user" value="{{ page_user.username }}"/>
+		</form>
+		<div class="invisible status"></div>
+		<div class="spacer"></div>
+		<div id="searchresults" class="invisible"></div>
+	</div>
+    <div class="spacer"></div>
+</div>

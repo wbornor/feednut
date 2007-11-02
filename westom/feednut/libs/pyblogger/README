@@ -1,0 +1,25 @@
+PyBlogger, v1.4
+
+Support added for Movable Types XML-RPC API extensions.  For more information
+about this interface, see
+http://www.movabletype.org/docs/mtmanual_programmatic.html#xmlrpc%20api.
+
+Copyright (c) 2003, Brent Loertscher (blurch@cbtlsl.com)
+
+PyBlogger, v1.3
+
+This is a Python wrapper for Blogger's XML-RPC interface.  For more
+information about this interface, see
+http://new.blogger.com/developers/api/1_docs/.
+
+This module works as of this writing, but Blogger has said that their
+API may change rapidly, so this wrapper module may be incomplete or
+nonworking by the time you read this.
+
+Copyright (c) 2001, Mark Pilgrim (f8dy@diveintopython.org)
+
+This is free software, distributed under the Python 2.1.1 license.
+See http://www.python.org/2.1.1/license.html
+
+Shameless plug: please read my free Python book at
+http://diveintopython.org/

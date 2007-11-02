@@ -1,0 +1,32 @@
+{% load feednut_tags %}
+
+{% get_feed_tag_tuples tags %}
+
+
+<div class="block" id="tagblock" style="cursor:default;">
+
+    <div class="blockhdr">
+        <table width="100%"><tr>
+        <td><span class="icon"><img src="{{ MEDIA_URL }}/img/star_yellow.png"/></span>&nbsp;<span>{{ page_user }}'s Tags ({{ tags|length }})</span></td>
+        
+        <td valign="top" align="right" width="40%">
+		    <div>
+		        <a href="javascript:void(0)" onclick="toggle_block(this, 'tagblock_main');this.blur();"><img src="{{ MEDIA_URL }}/img/navigate_down2.png"/></a>
+		    </div>
+	    </td>
+        
+        {% comment %}<td valign="top" align="right">
+            <a href="javascript:void(0)" onclick="toggle_specialblock('tagblock');"><img src="{{ MEDIA_URL }}/img/delete2.png"/></a>
+        </td>{% endcomment %}</tr></table>
+    </div>
+
+    <div class="bmain" id="tagblock_main">
+	    <div class="tags">
+	    {% for tag in tags %}
+	        <span><a style="color:{% cycle navy,#0065D0 %};" href="javascript:void(0)" onclick="load_feeds(this, '{{ page_user.username }}');">{{ tag.tag }}</a>{% comment %}({{ tag.count }}){% endcomment %}</span>
+	    {% endfor %}
+	    </div>
+	    <div><a href="/{{ page_user.username }}/">Show All Feeds</a></div>
+	</div>
+    <div class="spacer"></div>
+</div>

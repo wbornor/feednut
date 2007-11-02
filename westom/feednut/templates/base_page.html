@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load feednut_tags %}
+
+{% block extrastyle %}
+<link rel="alternate" type="application/rss+xml" title="FeedNut.com | Top Feeds" href="/.rss" />
+<link rel="alternate" type="application/rss+xml" title="FeedNut.com | Recent Reads" href="/latest.rss" />
+<script language="JavaScript" type="text/javascript"><!--
+MochiKit.DOM.addLoadEvent(initLightbox);
+//-->
+</script>
+{% endblock %}
+
+addLoadEvent();
+
+{% block container %}
+    <div id="header">{% block header %}{% load_header_page %}{% endblock %}</div>
+    <div id="main_msg" class="invisible" style="text-align:right; position: absolute; visibility: hidden; top: 0px;"></div>
+	<div id="main">{% block content %}{{ content }}{% endblock %}</div>
+    <div class="spacer"></div>
+	<div id="footer">{% block footer %}{% load_footer_page %}{% endblock %}</div>
+{% endblock %}	
+	
+{% block outside_container %}
+{% endblock %}

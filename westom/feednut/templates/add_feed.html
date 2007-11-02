@@ -1,0 +1,13 @@
+{% extends "base_page.html" %}
+{% load feednut_tags %}
+
+{% block special_headers %}nothing{% endblock %}
+
+{% block content %}
+<div id="content">
+	<div style="margin:0% 20% 0% 20%; border:1px solid black;">
+		{% load_add_feed_form_page %}
+	</div>
+	<div class="spacer">&nbsp;</div>
+</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% load feednut_tags %}
+{% load feednut_filters %}
+
+<div id="t_{{ feed_id }}_{{ index }}" class="entry {% if index|divisibleby:2 %}normalRow{% else %}alternateRow{% endif %}">
+    <div class="entry_title" onmouseover="$(this).addClass('entry_hover')" onmouseout="$(this).removeClass('entry_hover')"><a id="entry_link_{{ feed_id }}_{{ index }}" target="_blank" href="/feed/read/?url={{ entry.link|urlencode }}&feed={{ feed.xml_url|urlencode }}&title={{ entry.title|striptags }}">{{ entry.title|striptags }}</a></div>
+    <div class="sum hidden" id="sum_{{ feed_id }}_{{ index }}">
+        <div class="sumdata">{{ entry.summary }}{% for content in entry.content %}{{ content.value }}{% endfor %}</div>
+        <div class="sumlink">
+            <table width="100%"><tr>
+            <td><a target="_blank" href="/feed/read/?url={{ entry.link|urlencode }}&feed={{ feed.xml_url|urlencode }}&title={{ entry.title|striptags }}" title="read article"><img class="skip" src="{{ MEDIA_URL }}/img/windows.gif"/>full article</a></td>
+            <td align="right"><div>
+                <a target="_blank" href="http://del.icio.us/post?title={{ entry.title|striptags }}&url={{ entry.link|urlencode }}"><img src="{{ MEDIA_URL }}/img/delicious-16x16.gif" title="del.icio.us" /></a>&nbsp;
+                <a target="_blank" href="http://technorati.com/cosmos/search.html?url={{ entry.link|urlencode }}"><img src="{{ MEDIA_URL }}/img/technorati.gif" title="technorati" /></a>&nbsp;
+                <a target="_blank" href="http://www.digg.com/submit?url={{ entry.link|urlencode }}"><img src="{{ MEDIA_URL }}/img/digman.gif" title="digg" /></a>&nbsp;
+                <a target="_blank" href="http://reddit.com/submit?url={{ entry.link|urlencode }}&title={{ entry.title|striptags }}"><img src="{{ MEDIA_URL }}/img/reddithead.gif" title="reddit"/></a>&nbsp;
+				<a  target="_blank" href="http://www.addtoany.com/?sitename=&siteurl=&linkname={{ entry.title|striptags }}&linkurl={{ entry.link|urlencode }}&type=page"><img src="{{ MEDIA_URL }}/img/addtoany-plus.gif" width="16" height="16" border="0" title="Add to any service" alt="Add to any service"/></a>
+            </div></td>
+            </tr>
+            <tr>
+				{% ifisme %}
+            	<td><a onclick="_read_later('{{ feed_id }}_{{ index }}');return true;" title="save article for later">read later</a></td>
+            	<td align="right"><div id="entryst_{{ feed_id }}_{{ index }}" class="status invisible"></div></td>
+            	{% endifisme %}
+			</tr>
+            </table>
+        </div>
+    </div>
+</div>

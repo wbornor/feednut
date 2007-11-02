@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<opml version="1.0">
+<head>
+    <title>{{ page_user.username }}'s Feednut.com Subscriptions</title>
+</head>
+<body>
+  <outline title="Subscriptions">
+  	{% for feed in feeds %}
+  		<outline title="{{ feed.title|escape }}" htmlUrl="http://feednut.com" type="rss" xmlUrl="{{ feed.xml_url|escape }}" />
+	{% endfor %}
+  </outline>
+</body>
+</opml>

@@ -1,0 +1,20 @@
+{% extends "base_page.html" %}
+{% load feednut_tags %}
+
+{% block special_headers %}{% endblock %}
+
+
+{% block content %}
+<div class="center-blurb">
+    <div class="errtitle">Error 404 - Page Not Found!</div>
+    <div class="errmsg">
+		<p>Uh oh! It looks like somebody touched a wire they weren't supposed to touch. It could have been either one of us.</p>
+		<p>For your safety, we have provided you a way out of this hairy situation.</p>
+        <p>To go to the homepage click <b><a href="/">here</a></b>. If there truly is a problem, let us know by emailing <b>westom at feednut dot com</b>.</p>
+        <p>Keep in mind, the internet is a fragile thing. We are sorry to show you this, but we thought it might help you to understand.</p>
+        <p style="text-align:center;"><img src="{{ MEDIA_URL }}/img/wires.jpg"/></p>
+    </div>
+</div>
+{% endblock %}
+
+

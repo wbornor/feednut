@@ -1,0 +1,34 @@
+{% load feednut_tags %}
+{% load feednut_filters %}
+{% get_user_buddies buddies %}
+{% get_permanent_feeds permanent_feeds %}
+
+<div id="budtitle" class="minititle">{{ page_user.username }}'s Buddies: ({{ buddies|length }})</div>
+                 
+ <div id="buddies" class="tags">
+    {% for buddy in buddies %}<span><a style="color:{% cycle navy,#0065D0 %};" href="/{{ buddy.username }}/">{{ buddy.username }}</a>&nbsp;<a href="javascript:void(0)" onclick="del_buddy('{{ user.username }}', '{{ buddy.username }}');"><img src="{{ MEDIA_URL }}/img/del_small.gif"/></a></span>{% endfor %}
+ </div>
+ <div class="status invisible" id="delf_st"></div>
+ 
+ {% ifisme %}
+     <form name="add_buddy" onsubmit="add_buddy_f(this);return false;">
+         <div>Add Buddy: <input type="text" name="buddy" size="10"/>&nbsp;<input class="submit" type="submit" name="addfriend" value="Add!"/>&nbsp;<input class="submit" type="reset" name="clear" value="clear"/></div>
+         <input type="hidden" name="user" value="{{ user.username }}"/>
+     </form>
+     <div class="status invisible" id="addf_st"></div>
+ {% endifisme %}
+ 
+ {% if user.is_authenticated %}{% ifisme %}{% else %}
+        <div><a href="javascript:void(0)" onclick="add_buddy('{{ user.username }}', '{{ page_user.username }}');">Add</a> {{ page_user.username }} to your Network!</div>
+        <div class="status invisible" id="addf_st2"></div>
+ {% endifisme %}{% endif %} 
+ <p/>
+ 
+ <div class="rss">
+ 	{% for feed in permanent_feeds %}
+		 <div>
+		 	<a target="_blank" href="{{ feed.xml_url }}">{{ feed.title }}&nbsp;<img src="{{ MEDIA_URL }}/img/Livemark.gif"/></a>
+			{% if user.is_authenticated %}{% ifhasfeed %}{% else %}&nbsp;&nbsp;<a id="community_feed_{{ feed.id }}" href="/form/add_feed/?async&calling_link=community_feed_{{ feed.id }}&page_user_id={{ page_user.id }}&url={{ feed.xml_url }}" rel="lightbox"><img src="{{ MEDIA_URL }}/img/feednut_add.gif"/></a>{% endifhasfeed %}{% endif %}
+		</div>
+    {% endfor %}     
+ </div>

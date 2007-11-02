@@ -1,0 +1,35 @@
+{% extends "base_page.html" %}
+{% load feednut_tags %}
+
+{% block extrastyle %}
+<script language="JavaScript" type="text/javascript" src="{{ MEDIA_URL }}/js/nifty.js"></script>
+{{ block.super }}
+<link rel="alternate" type="application/rss+xml" title="FeedNut.com | {{ page_user.username }}'s Top Feeds" href=".rss" />
+<link rel="alternate" type="application/rss+xml" title="FeedNut.com | {{ page_user.username }}'s Recent Reads" href="latest.rss" />
+<script language="JavaScript" type="text/javascript" src="{{ MEDIA_URL }}/js/dragdrop.js"></script>
+<script language="JavaScript" type="text/javascript" src="{{ MEDIA_URL }}/js/drag.js"></script>
+<script language="JavaScript" type="text/javascript" src="{{ MEDIA_URL }}/js/coordinates.js"></script>
+<script language="JavaScript" type="text/javascript"><!--
+$(document).ready(function(){setup_entries(null);init_user_page();});
+//-->
+</script>
+{% endblock %}
+
+{% block content %}
+{% comment %}<table width="100%"><tr><td valign="top" width="50%">{% endcomment %}
+{% load_toolbar_page %}
+{% comment %}</td><td valign="top" width="50%">
+{% load_rss_feeds_page %}
+</td></tr></table>{% endcomment %}
+<div id="content">
+
+{% load_feeds_page %}
+
+<div class="spacer">&nbsp;</div>
+
+{% load_addsearch_page %}
+{% comment %}
+{% load_account_settings_page %}
+{% endcomment %}
+</div>
+{% endblock %}

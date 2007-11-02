@@ -1,0 +1,36 @@
+{% load feednut_tags %}
+
+<div>
+    <div class="left"><a href="/{{ user.username }}"><img src="{{ MEDIA_URL }}/img/logo2.jpg"/></a>&nbsp;&nbsp;beta</div>
+    <div class="right"><ul class="pipe" style="margin:0;padding:0;">
+	    {% if user.is_authenticated %}
+	        <li class="first"><strong>Hey {{ user.username }}!</strong></li>
+	        <li><a href="/{{ user.username }}/">My Feeds</a></li>
+	        {% block special_headers %}
+		        <li><a href="javascript:void(0)" onclick="toggle_specialblock('addsearch');">Search</a></li>
+		        {% comment %}
+		        <li><a href="javascript:void(0)" onclick="toggle_acct();">Settings</a></li>
+		        {% endcomment %}
+	        {% endblock %}
+	        <li><a href="/logout/">Sign Out</a></li>
+		{% else %}
+		    <li class="first" style="margin:0; padding:0;">
+			    <form name="login" onsubmit="do_login(this);return false;">
+				    <label id="user_lbl" for="username">username</label><input type="text" id="username" name="username" size="15" maxlength="20"/>
+				    <label id="pass_lbl" for="password">password</label><input type="password" id="password" name="password" size="15" maxlength="20"/>
+					<span class="submit-row"><input class="submit2" type="submit" value="Login!"/></span>
+					{% if next %}<input type="hidden" name="next" value="{{ next|urlencode }}"/>{% endif %}
+				</form>
+		    </li>
+		{% endif %}
+    </ul></div>
+    <div class="spacer"></div>
+    <div class="error right" style="margin-right:10px;" id="login_error"></div>
+    <div class="spacer"></div>
+    {% if not user.is_authenticated %}
+        <div style="text-align:right;">
+            <span><a id="signin" href="/login/?lb={% if next %}&next={{ next|urlencode }}{% endif %}" rel="lightbox">No account? Register!</a></span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a id="forgot" href="/login/forgot/" rel="lightbox">Forgotten Password?</a></span>
+        </div>
+    {% endif %}
+</div>

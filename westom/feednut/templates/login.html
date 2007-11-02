@@ -1,0 +1,41 @@
+{% load captcha %}
+{% load feednut_tags %}
+{% load feednut_filters %}
+
+<div id="login">
+    {% if url %}
+    <h3 style="margin-bottom:0;">Login!</h3>
+	<form name="login" onsubmit="do_login(this, true);return false;">
+	    <table align="center">
+	    <tr><td><label id="user_lbl_lbox" for="username">username</label></td><td><input type="text" id="username" name="username" size="15" maxlength="20"/></td></tr>
+	    <tr><td><label id="pass_lbl_lbox" for="password">password</label></td><td><input type="password" id="password" name="password" size="15" maxlength="20"/></td></tr>
+	    </table>
+		<div class="submit-row"><input class="submit2" type="submit" value="Login!"/></div>
+		{% if next %}<input type="hidden" name="next" value="{{ next|urlencode }}"/>{% endif %}
+	</form>
+	<div class="error" id="login_error_lbox"></div>
+	
+	<div>- or -{% comment %}<a id="newaccount_lnk" href="javascript:void(0)" onClick="MochiKit.DOM.toggleElementClass('invisible', 'newaccount');">Not a user? Create an account!</a>{% endcomment %}</div>
+	{% endif %}
+	<div id="newaccount">
+		<h3 style="margin-bottom:0;">Create a New Account: It's Free!</h3>
+		<div>Think up a fun username, a good password, and also tell us your email. We don't share your info. (<a href="/help/terms">terms</a>)</div>
+		<form name="newaccount" onsubmit="register(this);return false;">
+			<table align="center">
+			<tr><td><label id="newuser_lbl" class="field-row" for="new_username">username</label></td><td><input type="text" id="new_username" name="new_username" value="{{ reg_fields.new_username }}" maxlength="20"/></td></tr>
+			<tr><td><label id="newpass_lbl"class="field-row" for="new_password">password</label></td><td><input type="password" id="new_password" name="new_password" maxlength="32"/></td></tr>
+			
+			<tr><td><label id="newemail_lbl" for="new_email">email</label></td><td><input type="text" id="new_email" name="new_email" value="{{ reg_fields.new_email }}" onkeyup="check_email();" maxlength="128"/></td></tr>
+			{% captcha %}
+			<tr><td colspan="2"><img src="{{captcha_image}}" width="140" height="50"/><br/></td></tr>
+			<tr><td><label id="newcaptcha_lbl" class="field-row" for="captcha_word">security word</label></td><td><input type="text" name="captcha_word" maxlength="20"/></td></tr>
+			<input type="hidden" name="captcha_id" value="{{ captcha_id }}"/>
+			</table>
+			<div class="submit-row"><input class="submit" type="submit" value="Register!"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="hideLightbox(); return false;" class="submit" type="submit" value="Cancel"/></div>
+			{% if next %}<input type="hidden" name="next" value="{{ next|urlencode }}"></input>{% endif %}
+		</form>
+		<br/>
+		<div class="error" id="newacc_error"></div>
+		<div class="status" id="newacc_status"></div>  
+	</div>
+</div>

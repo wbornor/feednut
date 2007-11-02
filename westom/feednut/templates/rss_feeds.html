@@ -1,0 +1,29 @@
+{% load feednut_tags %}
+
+<div class="block" id="rssblock" style="cursor:default;">
+
+    <div class="blockhdr">
+        <table width="100%"><tr>
+        <td><span class="icon"><img src="{{ MEDIA_URL }}/img/xml.gif"/></span>&nbsp;<span>Social Syndication</span></td>
+        
+        <td valign="top" align="right" width="40%">
+		    <div>
+		        <a href="javascript:void(0)" onclick="toggle_block(this, 'rssblock_main');this.blur();"><img src="{{ MEDIA_URL }}/img/navigate_down2.png"/></a>
+		    </div>
+	    </td>
+        
+        {% comment %}<td valign="top" align="right">
+            <a href="javascript:void(0)" onclick="toggle_specialblock('tagblock');"><img src="{{ MEDIA_URL }}/img/delete2.png"/></a>
+        </td>{% endcomment %}</tr></table>
+    </div>
+
+    <div id="rssblock_main">
+	    <div class="rss"><table><tr>
+	        <td><div><a target="_blank" href="/{{page_user.username }}/.rss"><img src="{{ MEDIA_URL }}/img/rss.gif"/></a>&nbsp;{{ page_user.username }}'s Top Feeds {% comment %}&nbsp;{% if user.is_authenticated %}<span class="sub"><a href="javascript:void(0)"><img src="{{ MEDIA_URL }}/img/subscribe.png"/>subscribe</a></span>{% endif %}{% endcomment %}</div></td>
+	        <td><div><a target="_blank" href="/.rss"><img src="{{ MEDIA_URL }}/img/rss.gif"/></a>&nbsp;FeedNut.com Top Feeds {% comment %}&nbsp;{% if user.is_authenticated %}<span class="sub"><a href="javascript:void(0)"><img src="{{ MEDIA_URL }}/img/subscribe.png"/>subscribe</a></span>{% endif %}{% endcomment %}</div></td>
+	        </tr><tr><td><div><a target="_blank" href="/{{page_user.username }}/latest.rss"><img src="{{ MEDIA_URL }}/img/rss.gif"/></a>&nbsp;{{ page_user.username }}'s Recent Reads {% comment %}&nbsp;{% if user.is_authenticated %}<span class="sub"><a href="javascript:void(0)"><img src="{{ MEDIA_URL }}/img/subscribe.png"/>subscribe</a></span>{% endif %}{% endcomment %}</div></td>
+	        <td><div><a target="_blank" href="/latest.rss"><img src="{{ MEDIA_URL }}/img/rss.gif"/></a>&nbsp;FeedNut.com Recent Reads {% comment %}&nbsp;{% if user.is_authenticated %}<span class="sub"><a href="javascript:void(0)"><img src="{{ MEDIA_URL }}/img/subscribe.png"/>subscribe</a></span>{% endif %}{% endcomment %}</div></td>
+	    </tr></table></div>
+	</div>
+    <div class="spacer"></div>
+</div>

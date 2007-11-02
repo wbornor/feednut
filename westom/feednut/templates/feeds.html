@@ -1,0 +1,17 @@
+{% load feednut_tags %}
+{% load feednut_filters %}
+
+<div id="feeds" style="width:100%;">
+    <table width="100%"><tr>
+    {% for feedlist in feeds|split_seq:"3" %}
+        <td valign="top" width="33%">
+        <div id="col{{ forloop.counter }}" class="column col3">
+            {% for feed in feedlist %}
+                {% load_feed_page %}
+            {% endfor %}
+        </div>
+        </td>
+    {% endfor %}
+    </tr></table>
+	<div class="spacer"></div>
+</div>

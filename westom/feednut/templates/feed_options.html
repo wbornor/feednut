@@ -1,0 +1,46 @@
+{% load feednut_tags %}
+{% load feednut_filters %}
+
+<div class="options invisible" id="optz_{{ feed.id }}">
+    <form id="tagfeed_{{ userfeed.id }}" onsubmit="tagIt(this);return false;">
+        <div class="tags">
+            <div>
+	            <label for="tags">Tags:</label><input type="text" id="tags_{{ userfeed.id}}" name="tags" value="{{ userfeed.get_tags_string }}" size="28"/>
+	            <input type="hidden" name="id" value="{{ userfeed.id }}"/>
+	            <input type="hidden" name="user" value="{{ user.username }}"/>
+				{% ifisme %}
+	            <input class="submit" name="tagfeed" type="submit" value="Tag Feed!"/>
+				{% endifisme %}
+	        </div>
+	        <div id="tagst_{{ userfeed.id }}" class="status invisible"></div>
+        </div>
+		{% ifisme %}
+        {% if feed.get_suggested_tags %}
+	        <div class="suggest">Suggested Tags:
+	        {% for tag in feed.get_suggested_tags %}
+	            <a href="javascript:void(0)" onclick="MochiKit.DOM.$('tags_{{ userfeed.id }}').value += '{{ tag }} ';">{{ tag }}</a>
+	        {% endfor %}
+	        </div>
+		{% endif %}
+		{% endifisme %}
+    </form>
+    
+    <table width="100%"><tr>
+        <td align="left" nowrap>
+            {% ifisme %}
+            <form onsubmit="update_num_entries(this, '{{ user.username }}', '{{ feed.id }}'); return false;" action="/{{ user.username }}/feed/{{ feed.id }}/"> 
+            <div>Max Items: <select name="numitems">{% for num in 31|range_list:"1" %}<option value="{{ num }}" {% ifequal userfeed.num_items num %} selected="true" {% endifequal %}>{{ num }}</option>{% endfor %}</select> <input class="submit" type="submit" value="Save"/></div>
+            <input type="hidden" name="a" value="items"/>
+            </form>
+            {% endifisme %}
+        </td>
+        <td align="right">
+			<div>
+				<a onclick="move_feed('{{ feed.id }}', 'd');" title="move down"><img class="skip" src="{{ MEDIA_URL }}/img/nav_down_green.gif"/></a>
+				<a onclick="move_feed('{{ feed.id }}', 'u');" title="move up"><img class="skip" src="{{ MEDIA_URL }}/img/nav_up_green.gif"/></a>
+				<a onclick="move_feed('{{ feed.id }}', 'l');" title="move left"><img class="skip" src="{{ MEDIA_URL }}/img/nav_left_blue.gif"/></a>
+				<a onclick="move_feed('{{ feed.id }}', 'r');" title="move right"><img class="skip" src="{{ MEDIA_URL }}/img/nav_right_blue.gif"/></a>
+			</div>
+		</td>
+    </tr></table>
+</div>

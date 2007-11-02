@@ -1,0 +1,4 @@
+<div class="pagination">
+    <div>Showing {{ offset }}-{{ endoffset }} of {{ total }} result{{ total|pluralize }}</div>
+    <div>{% ifnotequal offset 1 %}<a href="javascript:void(0)" onclick="do_search('{{ query }}', '{{ type }}', {{ prevoffset }}, {{ limit }}, '{{ page_user.username }}');"><img src="{{ MEDIA_URL }}/img/navigate_left.png"/></a>&nbsp;{% endifnotequal %} {% ifnotequal endoffset total %}<a href="javascript:void(0)" onclick="do_search('{{ query }}', '{{ type }}', {{ endoffset }}, {{ limit }}, '{{ page_user.username }}');"><img src="{{ MEDIA_URL }}/img/navigate_right.png"/></a>{% endifnotequal %}</div>
+</div>

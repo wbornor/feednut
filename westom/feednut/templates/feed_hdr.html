@@ -1,0 +1,51 @@
+{% load feednut_tags %}
+{% load feednut_filters %}
+
+<div class="blockhdr">
+    <table width="100%"><tr>
+    <td><span><a target="_blank" href="{{ feed.channel_link }}">{{ feed.title|striptags }}</a>({{ userfeed.get_entries|length }})</span></td>
+    <td valign="top" align="right" width="40%">
+    <div>
+        {% comment %}THIS IS HOW THEY USED TO LOOK... but IE has problems!!!<span class="info"><a href="javascript:void(0)" onclick="reload_feed('{{ feed.id }}');this.blur();"><img src="{{ MEDIA_URL }}/img/refresh.gif"/></a><span class="tooltip">Reload the feed</span></span>{% endcomment %}
+        <a href="{{ feed.xml_url }}">
+                <img src="{{ MEDIA_URL }}/img/Livemark.gif" alt="raw feed" title="raw feed"/>
+        </a>
+        <a onclick="toggle_block(this, 'ent_{{ feed.id }}');this.blur();"><img src="{{ MEDIA_URL }}/img/navigate_down2.gif" alt="hide/show articles" title="hide/show articles"/></a>
+        <a onclick="reload_feed('{{ page_user.username }}', '{{ feed.id }}', '{{ feed.id }}');this.blur();"><img src="{{ MEDIA_URL }}/img/refresh.gif" alt="refresh" title="refresh"/></a>
+        <a onclick="MochiKit.DOM.toggleElementClass('invisible', 'optz_{{ feed.id }}');this.blur();"><img src="{{ MEDIA_URL }}/img/window_gear.gif" alt="options" title="options"/></a>
+        {% ifisme %}
+		{% if not userfeed.permanent_feed %}
+        <a onclick="remove_block('{{ feed.id }}', '{{ user.username }}');this.blur();"><img src="{{ MEDIA_URL }}/img/delete2.gif" alt="remove" title="remove" /></a>
+        {% endif %}
+		{% endifisme %}
+    </div>
+    </td>
+    </tr>
+    
+    <tr><td colspan="2">
+    {% if feed.icon_url %}
+        <span class="icon">
+            {% if not json %}
+                <img src="{{ feed.icon_url }}"/>
+            {% endif %}
+            {% comment %}otherwise, image is added by AJAX for faster rendering {% endcomment %}
+        </span>
+    {% endif %}
+    </td>
+    </tr>
+    
+    <tr><td colspan="2"><div class="italic">{{ feed.subtitle }}</div></td></tr>
+    
+    <tr><td>
+    {% ifisme %}{% else %}{% if user.is_authenticated %}{% ifhasfeed %}{% else %}
+        <a id="subscribe_feed_{{ feed.id }}" href="/form/subscribe/?async&calling_link=subscribe_feed_{{ feed.id }}&page_user_id={{ page_user.id }}&url={{ feed.xml_url|urlencode }}" onclick="showLightbox(this);return false;"><img src="{{ MEDIA_URL }}/img/feednut_subscribe.gif"/></a>
+    {% endifhasfeed %}{% endif %}{% endifisme %}
+    </td><td align="right">
+        <a onclick="expand_art('{{ feed.id }}');"><img class="skip" alt="show summaries" title="show summaries" src="{{ MEDIA_URL }}/img/navigate_down.gif"/></a>
+        <a onclick="collapse_art('{{ feed.id }}');"><img class="skip" alt="hide summaries" title="hide summaries" src="{{ MEDIA_URL }}/img/navigate_up.gif"/></a>
+    </td></tr>
+    <tr><td colspan="2" align="right"><div id="subsc_{{ feed.id }}" class="status invisible"></div></td></tr>
+    
+    
+    </table>
+</div>

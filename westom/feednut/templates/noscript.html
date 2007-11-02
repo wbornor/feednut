@@ -1,0 +1,251 @@
+{% load feednut_tags %}
+
+{% block extrastyle %}
+<style type="text/css">
+   <!--
+      div, p {
+         padding: 0px;
+         margin: 10px 0px;
+         font-size: 14px;
+         font-family: verdana;
+         color: #222222;
+      }
+      h2 {
+         padding: 3px;
+         font-size: 18px;
+         font-family: arial;
+         font-weight: bold;
+         color: #4444ff;
+         background-color: #c3d9ff;
+         border: 1px solid #cccccc; 
+      }
+      ul {
+         padding-top: 0px;
+         margin-top: 0px;
+      }
+      ul a {
+         font-size: 14px;
+         font-family: arial;
+         font-weight: bold;
+         text-decoration: none;
+         color: #0000ff;;
+      }
+      ul a:hover {
+         text-decoration: underline;
+         color: #ff0000;
+      }
+      h3 {
+         margin: 3px;
+         padding: 3px;
+         font-size: 12px;
+         font-family: arial;
+         font-weight: bold;
+         color: #4444ff;
+      }
+      .instructions {
+         font-size: 12px;
+         font-family: verdana;
+         color: #222222;
+         padding: 0px 20px;
+      }
+      .instructions p {
+         font-weight: bold;
+         color: #ff4444;
+      }
+      ol {
+         margin-top: 0px;
+      }
+      .menu {
+         font-weight: bold;
+         font-style: italic;
+      }
+      ol a {
+         color: #444444;
+      }
+      ol a:hover {
+         color: #ff4444;
+      }
+      #warning {
+         padding: 5px;
+         text-align: center;
+         background-color: #ff4444;
+         color: #ffffff;
+         font-size: 16px;
+         font-weight: bold;
+      }
+   -->
+   </style>
+
+{% endblock %}
+
+
+<div id="header"><a href="/{{ user.username }}"><img src="{{ MEDIA_URL }}/img/logo.jpg"/></a>&nbsp;&nbsp;beta</div>
+<div class="spacer"></div>
+
+<div id="warning">WARNING : JAVASCRIPT IS NOT ENABLED IN YOUR BROWSER!</div>
+<p>Javascript is required to use many of the features of this site.  The following instructions will help you enable Javscript in your browser.  Simply select your browser from the list below and follow the instructions.  When complete you can return to <a href="/">Feednut.com</a>.</p>
+<div>Please select your browser:
+   <ul>
+      <li><a href="#firefox">Firefox</a></li>
+      <li><a href="#ie">Internet Explorer</a></li>
+
+      <li><a href="#netscape">Netscape</a></li>
+      <li><a href="#safari">Safari</a></li>
+      <li><a href="#opera">Opera</a></li>
+   </ul>  
+</div>
+
+<h2><a name="firefox">Firefox</a></h2>
+<div class="instructions">
+   <p>Please follow the instructions appropriate to the version of your browser:</p>
+
+   <h3>1.X</h3>
+   <ol>
+      <li>Select the<span class="menu">Tools</span> menu and then select <span class="menu">Options</span>.</li>
+      <li>Select <span class="menu">Web features</span>.</li>
+
+      <li>Check the box beside <span class="menu">Enable Javascript</span>.</li>
+      <li>Click <span class="menu">OK</span> to close the <span class="menu">Options</span> window.</li>
+      <li>Return to <a href="/">Feednut.com</a>.</li>
+
+   </ol>
+</div>
+
+<h2><a name="ie">Internet Explorer</a></h2>
+<div class="instructions">
+   <p>Please follow the instructions appropriate to the version of your browser:</p>
+   <h3>6.X</h3>
+   <ol>
+      <li>Select the <span class="menu">Tools</span> menu and then select <span class="menu">Internet Options</span>.</li>
+
+      <li>Select the <span class="menu">Security</span> tab.</li>
+      <li>Click the <span class="menu">Custom level</span> button.  The <span class="menu">Security Settings</span> window will appear. </li>
+      <li>In the <span class="menu">Scripting</span> category do the following:
+         <ul>
+
+            <li>enable <span class="menu">Active scripting</span></li>
+            <li>enable <span class="menu">Allow paste options via script</span></li>
+            <li>enable <span class="menu">Scripting of Java applets</span></li>
+         </ul>
+      </li>
+      <li>Click <span class="menu">OK</span> to close the <span class="menu">Security settings</span> window.</li>
+
+      <li>Click <span class="menu">OK</span> to close the <span class="menu">Internet Options</span> window.</li>
+      <li>Return to <a href="/">Feednut.com</a>.</li>
+   </ol>
+   <h3>5.X</h3>
+
+   <ol>
+      <li>Select the <span class="menu">Tools</span> menu and then select <span class="menu">Internet Options</span>.</li>
+      <li>Select the <span class="menu">Security</span> tab.</li>
+      <li>Click the <span class="menu">Custom level</span> button.  The <span class="menu">Security Settings</span> window will appear.</li>
+
+      <li>In the <span class="menu">Scripting</span> category do the following:
+         <ul>
+            <li>enable <span class="menu">Active scripting</span></li>
+            <li>enable <span class="menu">Allow paste options via script</span></li>
+            <li>enable <span class="menu">Scripting of Java applets</span></li>
+
+         </ul>
+      </li>
+      <li>Click <span class="menu">OK</span> to close the <span class="menu">Security settings</span> window.</li>
+      <li>Click <span class="menu">OK</span> to close the <span class="menu">Internet Options</span> window.</li>
+
+      <li>Return to <a href="/">Feednut.com</a>.</li>
+   </ol>
+   <h3>5.X for Mac OS X</h3>
+   <ol>
+      <li>Select the <span class="menu">Explorer</span> menu and then select <span class="menu">Preferences</span>.</li>
+
+      <li>Click the arrow next to <span class="menu">Web Browser</span>.</li>
+      <li>Click <span class="menu">Web Content</span>.</li>
+      <li>In the <span class="menu">Active Content</span> check <span class="menu">Enable scripting</span>.</li>
+
+      <li>Click <span class="menu">OK</span> to close the <span class="menu">Preferences</span> window.</li>
+      <li>Return to <a href="/">Feednut.com</a>.</li>
+   </ol>   
+   <h3>5 for Mac OS 9</h3>
+
+   <ol>
+      <li>Select the <span class="menu">Edit</span> menu and then select <span class="menu">Preferences</span>.</li>
+      <li>Click the arrow next to <span class="menu">Web Browser</span>.</li>
+      <li>Click <span class="menu">Web Content</span>.</li>
+
+      <li>In the <span class="menu">Active Content</span> check <span class="menu">Enable scripting</span>.</li>
+      <li>Click <span class="menu">OK</span> to close the <span class="menu">Preferences</span> window.</li>
+
+      <li>Return to <a href="/">Feednut.com</a>.</li>
+   </ol>   
+</div>
+
+<h2><a name="netscape">Netscape</a></h2>
+<div class="instructions">
+   <p>Please follow the instructions appropriate to the version of your browser:</p>
+   <h3>7.X</h3>
+   <ol>
+      <li>Select the <span class="menu">Edit</span> menu and then select <span class="menu">Preferences</span>.</li>
+
+      <li>Click the arrow next to <span class="menu">Advanced</span>.</li>
+      <li>Click <span class="menu">Scripts &amp; Plugins</span>.</li>
+      <li>Check <span class="menu">Navigator</span> beneath "Enable Javascript for".</li>
+
+      <li>Click <span class="menu">OK</span>.</li>
+      <li>Return to <a href="/">Feednut.com</a>.</li>
+   </ol>
+   <h3>6.X for Mac OS X</h3>
+   <ol>
+
+      <li>Select the <span class="menu">Edit</span> menu and then select <span class="menu">Preferences</span>.</li>
+      <li>Click <span class="menu">Advanced</span>.</li>
+      <li>Check <span class="menu">Enable Java</span>.</li>
+
+      <li>Check <span class="menu">Enable JavaScript for Navigator</span>.</li>
+      <li>Click <span class="menu">OK</span>.</li>
+      <li>Return to <a href="/">Feednut.com</a>.</li>
+   </ol>
+</div>
+
+<h2><a name="safari">Safari</a></h2>
+<div class="instructions">
+   <p>Please follow the instructions appropriate to the version of your browser:</p>
+   <h3>2.X</h3>
+
+   <ol>
+      <li>Select the <span class="menu">Safari</span> menu and then select <span class="menu">Preferences</span>.</li>
+      <li>Click the <span class="menu">Security</span> .</li>
+      <li>Check <span class="menu">Enable JavaScript</span>.</li>
+
+      <li>Close the window.</li>
+      <li>Return to <a href="/">Feednut.com</a>.</li>
+   </ol>
+</div>
+
+<h2><a name="opera">Opera</a></h2>
+<div class="instructions">
+   <p>Please follow the instructions appropriate to the version of your browser:</p>
+
+   <h3>8.X</h3>
+   <ol>
+      <li>Select the <span class="menu">Tool</span> menu and then select <span class="menu">Preferences</span>.</li>
+      <li>Click the <span class="menu">Advanced</span> tab.</li>
+
+      <li>Check <span class="menu">Enable JavaScript</span>.</li>
+      <li>Click <span class="menu">OK</span>.</li>
+      <li>Return to <a href="/">Feednut.com</a>.</li>
+   </ol>
+
+   <h3>6.X / 7.X</h3>
+   <ol>
+      <li>Select the <span class="menu">File</span> menu and then select <span class="menu">Preferences</span>.</li>
+      <li>Select <span class="menu">Multimedia</span>.</li>
+
+      <li>Check <span class="menu">Enable JavaScript</span>.</li>
+      <li>Click <span class="menu">OK</span>.</li>
+      <li>Return to <a href="/">Feednut.com</a>.</li>
+   </ol>
+
+</div>
+
+<center>
+{% load_footer_page %}
+</center>

@@ -1,0 +1,27 @@
+{% load feednut_tags %}
+{% load feednut_filters %}
+
+<div class="results">
+    {% if results %}
+        {% load_search_results_nav_page %}
+        {% for result in results %}
+            <div class="result {% cycle normalRow,alternateRow %}">
+                <table width="100%">
+		            <tr>
+		                <td><div class="title">{{ result.title }}</div></td>
+		                <td align="right" width="10%">
+			                {% ifhasfeed %}{% else %}
+		            			<div><a id="add_search_result_{{ result.id }}" href="/form/subscribe/?async&calling_link=add_search_result_{{ result.id }}&page_user_id={{ page_user.id }}&url={{ result.xml_url|urlencode }}" onclick="showLightbox(this);return false;"><img src="{{ MEDIA_URL }}/img/feednut_add.gif"/></a></div>
+		            		{% endifhasfeed %}
+		            	</td>
+		            </tr>
+		        </table>
+	            <div class="xml truncate">{{ result.xml_url}}</div>
+	            <div class="desc truncate">{{ result.subtitle }}</div>
+	        </div>
+        {% endfor %}
+        {% load_search_results_nav_page %}
+    {% else %}
+        <div>No results</div>
+    {% endif %}
+</div>
